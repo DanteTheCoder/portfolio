@@ -1,26 +1,29 @@
 // src/App.tsx
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import SplashCursor from "./bits/SplashCursor";
 
 function App() {
   return (
     <div className="bg-[#060610] min-h-screen">
+      {/* Splash cursor — sits above everything, pointer-events: none */}
+      <SplashCursor
+        SPLAT_RADIUS={0.25}
+        SPLAT_FORCE={5000}
+        DENSITY_DISSIPATION={3}
+        VELOCITY_DISSIPATION={2}
+        CURL={4}
+      />
       <Navbar />
       <Hero />
-
-      {/* Placeholder sections - you'll build these next */}
-      <section id="about" className="min-h-screen flex items-center justify-center">
-        <p className="text-white/30 font-mono text-sm">// About section coming soon</p>
-      </section>
-      <section id="projects" className="min-h-screen flex items-center justify-center">
-        <p className="text-white/30 font-mono text-sm">// Projects section coming soon</p>
-      </section>
-      <section id="skills" className="min-h-screen flex items-center justify-center">
-        <p className="text-white/30 font-mono text-sm">// Skills section coming soon</p>
-      </section>
-      <section id="contact" className="min-h-screen flex items-center justify-center">
-        <p className="text-white/30 font-mono text-sm">// Contact section coming soon</p>
-      </section>
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
     </div>
   );
 }
