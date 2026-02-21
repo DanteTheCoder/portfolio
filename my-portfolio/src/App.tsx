@@ -6,13 +6,14 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import SplashCursor from "./bits/SplashCursor";
+import Experience from "./components/Experience";
 
 function App() {
   return (
     <div className="bg-[#060610] min-h-screen">
       {/* Splash cursor — sits above everything, pointer-events: none */}
       <SplashCursor
-        SPLAT_RADIUS={0.25}
+        SPLAT_RADIUS={0.1}
         SPLAT_FORCE={5000}
         DENSITY_DISSIPATION={3}
         VELOCITY_DISSIPATION={2}
@@ -21,6 +22,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Experience />
       <Projects />
       <Skills />
       <Contact />

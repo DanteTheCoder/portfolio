@@ -19,13 +19,13 @@ const projects = [
     tags: ["Next.js", "TypeScript", "Headless CMS", "Stripe", "PayPal", "CI/CD"],
     metrics: ["+33% donations", "+19% donors", "+24% ad performance"],
     accent: "from-violet-600 to-purple-600",
-    link: null,
+    link: "https://ilaeurope.de/de",
   },
   {
     title: "Internal Operations Dashboard",
     description: "Built an internal Next.js web application for personnel, providing secure access and tools to manage daily operations including donor communication via SMS and WhatsApp, data tracking, and CRM interfaces.",
     tags: ["Next.js", "React", "PostgreSQL", "REST API", "Metabase"],
-    metrics: ["+25% efficiency", "Real-time CRM", "SMS/WhatsApp integration"],
+    metrics: ["+25% efficiency", "Real-time CRM", "SMS/WhatsApp"],
     accent: "from-blue-600 to-cyan-600",
     link: null,
   },
@@ -33,7 +33,7 @@ const projects = [
     title: "Data Visualization Suite",
     description: "Developed interactive dashboards for internal reporting and performance tracking at Aurora Bilişim. Performed data analysis with PostgreSQL and Metabase to support business decisions across the organization.",
     tags: ["React", "PostgreSQL", "Metabase", "Python", "Data Analysis"],
-    metrics: ["Multiple KPI dashboards", "Automated reports", "Performance insights"],
+    metrics: ["KPI dashboards", "Automated reports", "Performance insights"],
     accent: "from-cyan-600 to-teal-600",
     link: null,
   },
@@ -41,7 +41,7 @@ const projects = [
     title: "Media Processing Automation",
     description: "Developed Python-based automation tools for media processing and internal workflows, increasing operational efficiency by ~25%. Integrated with existing web applications and data pipelines.",
     tags: ["Python", "Automation", "REST API", "GitLab CI/CD"],
-    metrics: ["+25% operational efficiency", "Automated workflows", "Media pipeline"],
+    metrics: ["+25% efficiency", "Automated workflows", "Media pipeline"],
     accent: "from-teal-600 to-green-600",
     link: null,
   },
@@ -52,33 +52,29 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="relative py-32 bg-[#060610] overflow-hidden">
+    <section id="projects" className="relative py-16 bg-[#060610] overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-900/10 blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"}>
           {/* Label */}
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-mono text-violet-400 tracking-widest uppercase">02 / Projects</span>
+            <span className="text-xs font-mono text-violet-400 tracking-widest uppercase">03 / Projects</span>
             <div className="h-px flex-1 bg-gradient-to-r from-violet-500/30 to-transparent" />
           </motion.div>
 
-          {/* Heading */}
           <motion.h2
             variants={fadeUp}
             className="text-4xl md:text-6xl font-black text-white mb-4"
             style={{ fontFamily: "'Syne', sans-serif" }}
           >
             Things I've{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              built
-            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">built</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-white/40 text-lg mb-16 max-w-xl">
-            Professional projects I've delivered with measurable impact.
+            Professional projects delivered with measurable impact.
           </motion.p>
 
-          {/* Grid */}
           <motion.div variants={stagger} className="grid md:grid-cols-2 gap-6">
             {projects.map((p, i) => (
               <motion.div
@@ -86,21 +82,30 @@ export default function Projects() {
                 variants={fadeUp}
                 className="group relative p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300 overflow-hidden flex flex-col"
               >
-                {/* Top gradient line */}
                 <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${p.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
-                {/* Glow blob */}
                 <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${p.accent} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
 
-                <h3 className="text-white font-bold text-lg mb-3 relative z-10" style={{ fontFamily: "'Syne', sans-serif" }}>
-                  {p.title}
-                </h3>
+                <div className="flex items-start justify-between gap-3 mb-3 relative z-10">
+                  <h3 className="text-white font-bold text-lg" style={{ fontFamily: "'Syne', sans-serif" }}>
+                    {p.title}
+                  </h3>
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 p-2 rounded-lg border border-white/5 hover:border-violet-500/40 hover:bg-violet-500/10 transition-all text-white/30 hover:text-violet-400"
+                      title="Visit site"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
 
-                <p className="text-white/50 text-sm leading-relaxed mb-4 relative z-10 flex-1">
-                  {p.description}
-                </p>
+                <p className="text-white/50 text-sm leading-relaxed mb-4 relative z-10 flex-1">{p.description}</p>
 
-                {/* Metrics */}
                 <div className="flex flex-wrap gap-2 mb-4 relative z-10">
                   {p.metrics.map((m, j) => (
                     <span key={j} className={`px-2.5 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${p.accent} text-white opacity-80`}>
@@ -109,7 +114,6 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 relative z-10">
                   {p.tags.map((t, j) => (
                     <span key={j} className="px-2.5 py-1 text-xs text-white/40 rounded-full border border-white/5 bg-white/[0.02] font-mono">
@@ -121,7 +125,6 @@ export default function Projects() {
             ))}
           </motion.div>
 
-          {/* GitHub CTA */}
           <motion.div variants={fadeUp} className="mt-12 text-center">
             <a
               href="https://github.com/DanteTheCoder"
