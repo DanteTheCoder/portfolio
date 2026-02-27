@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnet from "../bits/Magnet";
+import ElectricBorder from "../bits/ElectricBorder";
 
 const NAV_ITEMS = ["Home", "About", "Experience", "Projects", "Skills", "Contact"] as const;
 
@@ -58,15 +59,20 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-3 bg-[#060610]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_30px_rgba(109,40,217,0.15)]"
-            : "py-5 bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "py-3 bg-[#060610]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_30px_rgba(109,40,217,0.15)]"
+          : "py-5 bg-transparent"
+          }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+
           {/* Logo */}
-          <motion.button onClick={() => scrollTo("home")} className="relative group" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <motion.button
+            onClick={() => scrollTo("home")}
+            className="relative group"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             <span className="font-bold text-xl tracking-tight text-white font-mono">
               TK<span className="text-violet-400">.</span>
             </span>
@@ -82,9 +88,8 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.07 }}
                 onClick={() => scrollTo(item)}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                  activeSection === item ? "text-white" : "text-white/50 hover:text-white/90"
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${activeSection === item ? "text-white" : "text-white/50 hover:text-white/90"
+                  }`}
               >
                 {activeSection === item && (
                   <motion.span
@@ -101,31 +106,53 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Socials + Magnet Hire Me */}
+          {/* Socials + Hire Me */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-2">
-              <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+              <a
+                href={SOCIALS.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+              >
                 <GitHubIcon />
               </a>
-              <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+              <a
+                href={SOCIALS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+              >
                 <LinkedInIcon />
               </a>
             </div>
 
-            {/* ✨ Original React Bits Magnet wrapping the Hire Me button */}
-            <div className="hidden md:block">
+            {/* ✨ Magnet + ElectricBorder Hire Me */}
+            <div className="hidden md:block transition-all duration-400 hover:scale-125">
               <Magnet padding={60} magnetStrength={4}>
-                <a
-                  href="mailto:talhakekik@gmail.com"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 transition-all duration-200 shadow-[0_0_20px_rgba(109,40,217,0.3)] hover:shadow-[0_0_30px_rgba(109,40,217,0.5)]"
+                <ElectricBorder
+                  color="#f7f7ea"
+                  speed={1}
+                  chaos={0.12}
+                  thickness={2}
+                  style={{ borderRadius: 16 }}
                 >
-                  Hire Me
-                </a>
+                  <a
+                    href="mailto:talhakekik@gmail.com"
+                    className="gap-2 p-4 text-sm text-white"
+                  >
+                    Hire Me
+                  </a>
+                </ElectricBorder>
               </Magnet>
             </div>
 
             {/* Hamburger */}
-            <button onClick={() => setMenuOpen((v) => !v)} className="md:hidden flex flex-col gap-1.5 p-2 group">
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              className="md:hidden flex flex-col gap-1.5 p-2 group"
+              aria-label="Toggle menu"
+            >
               <span className={`block h-px w-6 bg-white transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
               <span className={`block h-px w-4 bg-white/60 transition-all duration-300 group-hover:w-6 ${menuOpen ? "opacity-0" : ""}`} />
               <span className={`block h-px w-6 bg-white transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
@@ -149,18 +176,26 @@ export default function Navbar() {
                 <button
                   key={item}
                   onClick={() => scrollTo(item)}
-                  className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                    activeSection === item ? "text-white bg-white/5 border border-white/10" : "text-white/50 hover:text-white hover:bg-white/5"
-                  }`}
+                  className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${activeSection === item
+                    ? "text-white bg-white/5 border border-white/10"
+                    : "text-white/50 hover:text-white hover:bg-white/5"
+                    }`}
                 >
                   {item}
                 </button>
               ))}
             </nav>
             <div className="flex items-center gap-3 pt-3 border-t border-white/10">
-              <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors"><GitHubIcon /></a>
-              <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors"><LinkedInIcon /></a>
-              <a href="mailto:talhakekik@gmail.com" className="ml-auto px-4 py-2 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600">
+              <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors">
+                <GitHubIcon />
+              </a>
+              <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-white/40 hover:text-white transition-colors">
+                <LinkedInIcon />
+              </a>
+              <a
+                href="mailto:talhakekik@gmail.com"
+                className="ml-auto px-4 py-2 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600"
+              >
                 Hire Me
               </a>
             </div>
