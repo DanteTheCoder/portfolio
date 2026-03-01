@@ -128,10 +128,10 @@ export default function Navbar() {
             </div>
 
             {/* ✨ Magnet + ElectricBorder Hire Me */}
-            <div className="hidden md:block transition-all duration-400 hover:scale-125">
+            <div className="hidden md:block transition-all duration-400 hover:scale-125 bg-purple-300/20 rounded-xl">
               <Magnet padding={60} magnetStrength={4}>
                 <ElectricBorder
-                  color="#f7f7ea"
+                  color="#c99ef4"
                   speed={1}
                   chaos={0.12}
                   thickness={2}

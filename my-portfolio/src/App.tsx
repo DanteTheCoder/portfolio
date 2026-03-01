@@ -13,7 +13,7 @@ function App() {
     <div className="bg-[#060610] min-h-screen">
       {/* Splash cursor — sits above everything, pointer-events: none */}
       <SplashCursor
-        SPLAT_RADIUS={0.1}
+        SPLAT_RADIUS={0.05}
         SPLAT_FORCE={5000}
         DENSITY_DISSIPATION={3}
         VELOCITY_DISSIPATION={2}
