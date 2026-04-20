@@ -1,8 +1,6 @@
 // src/components/Navbar.tsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Magnet from "../bits/Magnet";
-import ElectricBorder from "../bits/ElectricBorder";
 
 const NAV_ITEMS = ["Home", "About", "Experience", "Projects", "Skills", "Contact"] as const;
 
@@ -106,7 +104,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Socials + Hire Me */}
+          {/* Socials + View My Work */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-2">
               <a
@@ -127,24 +125,21 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* ✨ Magnet + ElectricBorder Hire Me */}
-            <div className="hidden md:block transition-all duration-400 hover:scale-125 bg-purple-300/20 rounded-xl">
-              <Magnet padding={60} magnetStrength={4}>
-                <ElectricBorder
-                  color="#c99ef4"
-                  speed={1}
-                  chaos={0.12}
-                  thickness={2}
-                  style={{ borderRadius: 16 }}
-                >
-                  <a
-                    href="mailto:talhakekik@gmail.com"
-                    className="gap-2 p-4 text-sm text-white"
-                  >
-                    Hire Me
-                  </a>
-                </ElectricBorder>
-              </Magnet>
+            {/* View My Work Button */}
+            <div className="hidden md:block">
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("projects");
+                }}
+                className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-violet-600 to-blue-600 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] active:scale-95"
+              >
+                View My Work
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
             </div>
 
             {/* Hamburger */}
@@ -193,10 +188,17 @@ export default function Navbar() {
                 <LinkedInIcon />
               </a>
               <a
-                href="mailto:talhakekik@gmail.com"
-                className="ml-auto px-4 py-2 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600"
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("projects");
+                }}
+                className="ml-auto flex items-center gap-2 px-5 py-2 text-sm font-bold text-white rounded-2xl bg-gradient-to-r from-violet-600 to-blue-600"
               >
-                Hire Me
+                View My Work
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </a>
             </div>
           </motion.div>

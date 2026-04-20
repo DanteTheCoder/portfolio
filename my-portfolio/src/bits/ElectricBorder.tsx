@@ -7,6 +7,7 @@ interface ElectricBorderProps {
   speed?: number;
   chaos?: number;
   borderRadius?: number;
+  thickness?: number;
   className?: string;
   style?: CSSProperties;
 }
@@ -17,6 +18,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   speed = 1,
   chaos = 0.12,
   borderRadius = 24,
+  thickness = 1,
   className,
   style
 }) => {
@@ -204,7 +206,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       ctx.scale(dpr, dpr);
 
       ctx.strokeStyle = color;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = thickness;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
@@ -280,7 +282,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       }
       resizeObserver.disconnect();
     };
-  }, [color, speed, chaos, borderRadius, octavedNoise, getRoundedRectPoint]);
+  }, [color, speed, chaos, borderRadius, thickness, octavedNoise, getRoundedRectPoint]);
 
   const vars = {
     '--electric-border-color': color,
