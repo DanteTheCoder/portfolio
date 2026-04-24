@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Aurora from "../bits/Aurora";
 import SplitText from "../bits/SplitText";
 import GradientText from "../bits/GradientText";
+import HeroCanvas from "../bits/HeroCanvas";
 
 function useTypewriter(words: string[], speed = 80, pause = 1800) {
   const [display, setDisplay] = useState("");
@@ -49,10 +50,11 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#060610]"
     >
       <Aurora colorStops={["#7c3aed", "#2563eb", "#dfed83"]} amplitude={1.2} blend={0.6} speed={1.0} />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060610]/20 via-transparent to-[#060610] pointer-events-none" />
+      <HeroCanvas />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#060610]/20 via-transparent to-[#060610] pointer-events-none" style={{ zIndex: 3 }} />
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
+        style={{ zIndex: 3,
           backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
                             linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",

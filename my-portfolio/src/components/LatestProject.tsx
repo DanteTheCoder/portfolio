@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ElectricBorder from "../bits/ElectricBorder";
+import CountUp from "../bits/CountUp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -91,6 +92,42 @@ export default function LatestProject() {
                   <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-3xl">
                     {project.description}
                   </p>
+
+                  {/* Animated stats */}
+                  <div className="flex flex-wrap gap-8 mb-10">
+                    <div className="flex flex-col items-start">
+                      <CountUp
+                        to={25000}
+                        suffix="+"
+                        duration={2.2}
+                        className="text-4xl font-black text-[#7df9ff] tabular-nums"
+                      />
+                      <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
+                        Jobs Listed
+                      </span>
+                    </div>
+                    <div className="h-12 w-px bg-white/10 self-center hidden sm:block" />
+                    <div className="flex flex-col items-start">
+                      <CountUp
+                        to={8}
+                        suffix="+"
+                        duration={1.5}
+                        className="text-4xl font-black text-[#7df9ff] tabular-nums"
+                      />
+                      <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
+                        Tech Stack
+                      </span>
+                    </div>
+                    <div className="h-12 w-px bg-white/10 self-center hidden sm:block" />
+                    <div className="flex flex-col items-start">
+                      <span className="text-4xl font-black text-[#7df9ff]">
+                        Live
+                      </span>
+                      <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
+                        Deployed
+                      </span>
+                    </div>
+                  </div>
 
                   {/* Metrics */}
                   <div className="flex flex-wrap gap-2 mb-4">

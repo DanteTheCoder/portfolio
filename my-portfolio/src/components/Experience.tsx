@@ -1,6 +1,10 @@
 // src/components/Experience.tsx
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -49,7 +53,29 @@ const experiences = [
 
 export default function Experience() {
   const ref = useRef(null);
+  const lineRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!lineRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        lineRef.current,
+        { scaleY: 0, transformOrigin: "top center" },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: lineRef.current,
+            start: "top 70%",
+            end: "bottom 30%",
+            scrub: 1.5,
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section id="experience" className="relative py-16 bg-[#060610] overflow-hidden">
@@ -81,8 +107,12 @@ export default function Experience() {
 
           {/* Timeline */}
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-violet-500/40 via-blue-500/20 to-transparent hidden md:block" />
+            {/* Vertical line — grows as you scroll via GSAP ScrollTrigger */}
+            <div
+              ref={lineRef}
+              className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-violet-500/40 via-blue-500/20 to-transparent hidden md:block"
+              style={{ transformOrigin: "top center" }}
+            />
 
             <div className="space-y-8">
               {experiences.map((exp, i) => (

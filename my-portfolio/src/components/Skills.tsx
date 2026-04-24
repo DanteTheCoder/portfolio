@@ -1,6 +1,7 @@
 // src/components/Skills.tsx
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
 import { LogoLoop } from "../bits/LogoLoop";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript,
@@ -149,6 +150,27 @@ export default function Skills() {
                 key={i}
                 variants={fadeUp}
                 className={`p-6 rounded-2xl border ${borderMap[group.color]} bg-white/[0.02] relative overflow-hidden transition-colors duration-300`}
+                style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = (e.clientX - rect.left) / rect.width - 0.5;
+                  const y = (e.clientY - rect.top) / rect.height - 0.5;
+                  gsap.to(e.currentTarget, {
+                    rotateX: -y * 14,
+                    rotateY: x * 14,
+                    transformPerspective: 900,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.7,
+                    ease: "elastic.out(1, 0.4)",
+                  });
+                }}
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 rounded-full ${glowMap[group.color]} blur-2xl`} />
                 <h3 className={`text-xs font-mono uppercase tracking-widest ${textMap[group.color]} mb-5`}>

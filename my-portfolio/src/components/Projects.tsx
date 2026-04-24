@@ -1,6 +1,7 @@
 // src/components/Projects.tsx
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
 import CardSwap, { Card } from "../bits/CardSwap";
 
 const fadeUp = {
@@ -158,6 +159,29 @@ export default function Projects() {
                   key={i}
                   variants={fadeUp}
                   className="group flex items-start gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
+                  style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    gsap.to(e.currentTarget, {
+                      rotateX: -y * 8,
+                      rotateY: x * 8,
+                      transformPerspective: 700,
+                      scale: 1.02,
+                      duration: 0.25,
+                      ease: "power2.out",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      rotateX: 0,
+                      rotateY: 0,
+                      scale: 1,
+                      duration: 0.6,
+                      ease: "elastic.out(1, 0.4)",
+                    });
+                  }}
                 >
                   <span className="text-xl shrink-0 mt-0.5">{p.emoji}</span>
                   <div className="min-w-0">
