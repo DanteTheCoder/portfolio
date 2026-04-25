@@ -60,17 +60,18 @@ export default function LatestProject() {
               <ElectricBorder
                 color="#7df9ff"
                 speed={1}
-                chaos={0.38}
+                chaos={0.32}
                 thickness={1.5}
                 style={{ borderRadius: 22 }}
               >
-                <div className="relative w-full p-6 md:p-9 bg-gradient-to-br from-[#0a141e]/95 to-[#060e16] rounded-[22px] overflow-hidden">
+                <div className="relative w-full p-6 md:p-9 bg-gradient-to-br from-[#071c24] via-[#060f18] to-[#040d12] rounded-[22px] overflow-hidden">
                   {/* Top accent line */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
 
                   {/* Radiating glows */}
-                  <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
-                  <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-teal-400/20 blur-3xl pointer-events-none" />
+                  <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-cyan-400/25 blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-[22px] bg-cyan-900/10 pointer-events-none" />
 
                   {/* Badge */}
                   <div className="flex items-center gap-2 mb-6">

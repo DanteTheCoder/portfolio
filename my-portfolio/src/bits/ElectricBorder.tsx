@@ -264,29 +264,29 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       // Outer electric glow
       ctx.save();
       ctx.shadowColor = color;
-      ctx.shadowBlur = 22;
-      ctx.lineWidth = thickness * 4;
+      ctx.shadowBlur = 14;
+      ctx.lineWidth = thickness * 1.8;
       ctx.strokeStyle = color;
-      ctx.globalAlpha = 0.25;
+      ctx.globalAlpha = 0.18;
       ctx.stroke();
       ctx.restore();
 
       // Mid glow
       ctx.save();
       ctx.shadowColor = color;
-      ctx.shadowBlur = 10;
-      ctx.lineWidth = thickness * 2;
+      ctx.shadowBlur = 6;
+      ctx.lineWidth = thickness * 0.9;
       ctx.strokeStyle = color;
-      ctx.globalAlpha = 0.9;
+      ctx.globalAlpha = 0.75;
       ctx.stroke();
       ctx.restore();
 
       // Bright white center line
       ctx.save();
       ctx.shadowColor = '#ffffff';
-      ctx.shadowBlur = 5;
-      ctx.lineWidth = thickness * 0.55;
-      ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+      ctx.shadowBlur = 3;
+      ctx.lineWidth = thickness * 0.35;
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
       ctx.globalAlpha = 1;
       ctx.stroke();
       ctx.restore();
