@@ -56,15 +56,15 @@ export default function LatestProject() {
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex justify-center">
-            <div className="w-full max-w-[820px]">
+            <div className="w-full max-w-[580px]">
               <ElectricBorder
                 color="#7df9ff"
                 speed={1}
-                chaos={0.17}
-                thickness={2}
+                chaos={0.38}
+                thickness={1.5}
                 style={{ borderRadius: 22 }}
               >
-                <div className="relative w-full p-8 md:p-14 bg-gradient-to-br from-[#0a141e]/95 to-[#060e16] rounded-[22px] overflow-hidden">
+                <div className="relative w-full p-6 md:p-9 bg-gradient-to-br from-[#0a141e]/95 to-[#060e16] rounded-[22px] overflow-hidden">
                   {/* Top accent line */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
 
@@ -82,45 +82,45 @@ export default function LatestProject() {
 
                   {/* Title */}
                   <h3
-                    className="text-white font-black text-3xl md:text-5xl mb-5 leading-tight"
+                    className="text-white font-black text-2xl md:text-3xl mb-4 leading-tight"
                     style={{ fontFamily: "'Syne', sans-serif" }}
                   >
                     {project.title}
                   </h3>
 
                   {/* Description — Fixed Visibility */}
-                  <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-3xl">
+                  <p className="text-white/90 text-base leading-relaxed mb-6 max-w-2xl">
                     {project.description}
                   </p>
 
                   {/* Animated stats */}
-                  <div className="flex flex-wrap gap-8 mb-10">
+                  <div className="flex flex-wrap gap-6 mb-7">
                     <div className="flex flex-col items-start">
                       <CountUp
                         to={25000}
                         suffix="+"
                         duration={2.2}
-                        className="text-4xl font-black text-[#7df9ff] tabular-nums"
+                        className="text-3xl font-black text-[#7df9ff] tabular-nums"
                       />
                       <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
                         Jobs Listed
                       </span>
                     </div>
-                    <div className="h-12 w-px bg-white/10 self-center hidden sm:block" />
+                    <div className="h-10 w-px bg-white/10 self-center hidden sm:block" />
                     <div className="flex flex-col items-start">
                       <CountUp
                         to={8}
                         suffix="+"
                         duration={1.5}
-                        className="text-4xl font-black text-[#7df9ff] tabular-nums"
+                        className="text-3xl font-black text-[#7df9ff] tabular-nums"
                       />
                       <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
                         Tech Stack
                       </span>
                     </div>
-                    <div className="h-12 w-px bg-white/10 self-center hidden sm:block" />
+                    <div className="h-10 w-px bg-white/10 self-center hidden sm:block" />
                     <div className="flex flex-col items-start">
-                      <span className="text-4xl font-black text-[#7df9ff]">
+                      <span className="text-3xl font-black text-[#7df9ff]">
                         Live
                       </span>
                       <span className="text-xs text-white/35 font-mono mt-1 tracking-widest uppercase">
@@ -139,7 +139,7 @@ export default function LatestProject() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-10">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((t, i) => (
                       <span key={i} className="px-3 py-1 text-[0.7rem] font-mono text-white/60 bg-white/5 border border-white/10 rounded-full">
                         {t}

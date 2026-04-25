@@ -205,8 +205,6 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.scale(dpr, dpr);
 
-      ctx.strokeStyle = color;
-      ctx.lineWidth = thickness;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
@@ -262,7 +260,36 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       }
 
       ctx.closePath();
+
+      // Outer electric glow
+      ctx.save();
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 22;
+      ctx.lineWidth = thickness * 4;
+      ctx.strokeStyle = color;
+      ctx.globalAlpha = 0.25;
       ctx.stroke();
+      ctx.restore();
+
+      // Mid glow
+      ctx.save();
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 10;
+      ctx.lineWidth = thickness * 2;
+      ctx.strokeStyle = color;
+      ctx.globalAlpha = 0.9;
+      ctx.stroke();
+      ctx.restore();
+
+      // Bright white center line
+      ctx.save();
+      ctx.shadowColor = '#ffffff';
+      ctx.shadowBlur = 5;
+      ctx.lineWidth = thickness * 0.55;
+      ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+      ctx.globalAlpha = 1;
+      ctx.stroke();
+      ctx.restore();
 
       animationRef.current = requestAnimationFrame(drawElectricBorder);
     };
